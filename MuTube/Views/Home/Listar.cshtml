@@ -1,0 +1,49 @@
+﻿@using Dominio
+@model Resultado
+@{
+    Layout = null;
+}
+<script type="text/javascript" src="~/Scripts/paginado.js"></script>
+
+<table style="width: 100%; margin-top: 15px;margin-bottom:10px " class="table table-striped">
+    <tr>
+        <th style="width: 15px"></th>
+        <th>Tema</th>
+        <th>Descripción</th>
+        <th>Duración</th>
+    </tr>
+    @foreach (var item in Model.Temas)
+    {
+        <tr>
+            <td class="text-center"><input id="@item.Id" data-nombre="@item.Nombre" class="checkDescargar" type="checkbox"/></td>
+            <td>@item.Nombre</td>
+            <td>@item.Autor</td>
+            <td>@item.Duracion</td>
+        </tr>
+    }
+</table>
+<table class="table" style="margin-bottom:0px">
+    <tr>
+        <td style="width: 100px" class="descargar sinBorde">
+            <button type="button" class="btn btn-primary">
+                <i class="glyphicon glyphicon-download-alt text-center"></i>&nbsp;Descargar
+            </button>
+        </td>
+            @if (!string.IsNullOrEmpty(Model.Anterior)) {
+                 <td class="col-lg-6 sinBorde" style="width:40%"><i id="prev" data-id="@Model.Anterior" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-left pull-right" style="cursor: pointer"></i></td>
+             }
+             else
+             {
+                 <td class="col-lg-6 sinBorde" style="width:40%">&nbsp;</td>
+             }
+             @if (!string.IsNullOrEmpty(Model.Siguiente))
+             {
+                 <td class="col-lg-6 sinBorde" style="width:40%"><i id="next" data-id="@Model.Siguiente" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-right" style="cursor: pointer"></i></td>
+             }
+             else
+             {
+                 <td class="col-lg-6 sinBorde" style="width:40%">&nbsp;</td>
+             }
+        <td style="width: 100px" class="sinBorde">@Model.Pagina / @Model.CantidadDePaginas</td>
+    </tr>
+</table>

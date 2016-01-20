@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "MoTube";
+}
+
+<div class="jumbotron" style="padding-top: 10px; padding-bottom: 15px;margin-bottom: 0px">
+    <h3 style="margin-top: 5px">MoTube</h3>
+    <div class="row">
+        <div class="col-md-12">
+            @using (Ajax.BeginForm("Index", "Home", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "gridContainer" }, new { @class = "" }))
+            {
+                <div class="input-group">
+
+                    <input type="text" name="filtro" class="form-control" placeholder="Search for..." autocomplete="off" autofocus>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit" >Buscar!</button>
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div id="gridContainer" class="col-md-12">
+        </div>
+    </div>
+</div>
+
+    <div class="modal fade bs-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Descargando...</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-condensed">
+                        <tbody class="tablaDescargados"></tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" >Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>

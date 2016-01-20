@@ -1,0 +1,46 @@
+﻿body {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.sinBorde {
+    border : 0!important;
+}
+
+.modal-dialog{
+position: absolute;
+left: 50%;
+margin-left: -312px;
+height: 500px;
+top: 50%;
+margin-top: -250px;
+} 
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding-top: 4px;
+  padding-bottom: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 12px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
