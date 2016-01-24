@@ -112,8 +112,8 @@ namespace Servicios
                 var content = resp2.Items.FirstOrDefault(x => x.Id == result.Id.VideoId);
                 resultado.Temas.Add(item: new Tema
                 {
-                    Nombre = result.Snippet.Title.Truncate(50),
-                    Autor = result.Snippet.Description.Truncate(80),
+                    Nombre = result.Snippet.Title.Truncate(90),
+                    //Autor = result.Snippet.Description.Truncate(60),
                     Id = result.Id.VideoId,
                     Duracion = content != null ? XmlConvert.ToTimeSpan(content.ContentDetails.Duration) : new TimeSpan()
                 });

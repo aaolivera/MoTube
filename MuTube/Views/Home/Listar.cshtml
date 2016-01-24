@@ -9,16 +9,18 @@
     <tr>
         <th style="width: 15px"><input id="todos" data-nombre="todos" class="todos" type="checkbox" /></th>
         <th>Tema</th>
-        <th>Descripción</th>
-        <th>Duración</th>
+        @*<th>Descripción</th>*@
+        <th class="text-center">Link Externo</th>
+        <th class="text-center">Duración</th>
     </tr>
     @foreach (var item in Model.Temas)
     {
         <tr>
             <td class="text-center"><input id="@item.Id" data-nombre="@item.Nombre" class="checkDescargar" type="checkbox" /></td>
-            <td><a href="https://www.youtube.com/watch?v=@item.Id" target="_blank">@item.Nombre</a></td>
-            <td>@item.Autor</td>
-            <td>@item.Duracion</td>
+            <td>@item.Nombre</td>
+            @*<td>@item.Autor</td>*@
+            <td class="text-center"><a href="https://www.youtube.com/watch?v=@item.Id" target="_blank"><img src="~/Image/yt.png" /></a></td>
+            <td class="text-center">@item.Duracion</td>
         </tr>
     }
 </table>
@@ -29,11 +31,18 @@
                 <i class="glyphicon glyphicon-download-alt text-center"></i>&nbsp;Descargar
             </button>
         </td>
-            @if (!string.IsNullOrEmpty(Model.Anterior)) {
-                 <td class="col-lg-6 sinBorde" style="width:40%"><i id="prev" data-id="@Model.Anterior" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-left pull-right" style="cursor: pointer"></i></td>
-             }
-             else
-             {
+            @if (!string.IsNullOrEmpty(Model.Anterior))
+            {
+                <td class="col-lg-6 sinBorde" style="width:40%">
+                    <div id="alertaError" data-mensaje="aaaaaaaaaa" class="alert alert-danger fade in col-lg-8" style="display:none;padding: 7px;margin-bottom:0">
+                        <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></i>
+                        <span></span>
+                    </div>
+                    <i id="prev" data-id="@Model.Anterior" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-left pull-right" style="cursor: pointer"></i>
+                </td>
+            }
+            else
+            {
                  <td class="col-lg-6 sinBorde" style="width:40%">
                      <div id="alertaError" data-mensaje="aaaaaaaaaa" class="alert alert-danger fade in col-lg-8" style="display:none;padding: 7px;margin-bottom:0">
                          <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></i>
