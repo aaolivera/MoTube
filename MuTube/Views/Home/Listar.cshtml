@@ -7,7 +7,7 @@
 
 <table style="width: 100%;margin-bottom:10px " class="table table-striped">
     <tr>
-        <th style="width: 15px"></th>
+        <th style="width: 15px"><input id="todos" data-nombre="todos" class="todos" type="checkbox" /></th>
         <th>Tema</th>
         <th>Descripción</th>
         <th>Duración</th>
@@ -15,8 +15,8 @@
     @foreach (var item in Model.Temas)
     {
         <tr>
-            <td class="text-center"><input id="@item.Id" data-nombre="@item.Nombre" class="checkDescargar" type="checkbox"/></td>
-            <td>@item.Nombre</td>
+            <td class="text-center"><input id="@item.Id" data-nombre="@item.Nombre" class="checkDescargar" type="checkbox" /></td>
+            <td><a href="https://www.youtube.com/watch?v=@item.Id" target="_blank">@item.Nombre</a></td>
             <td>@item.Autor</td>
             <td>@item.Duracion</td>
         </tr>

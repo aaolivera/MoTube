@@ -12,6 +12,14 @@
     $('#next').click(function () {
         pagina($('#next').data().id, $('#next').data().filtro, $('#next').data().pagina, true);
     });
+
+    $('#todos').change(function () {
+        if ($('#todos').is(":checked")) {
+            $("input.checkDescargar").prop('checked', true);
+        } else {
+            $("input.checkDescargar").prop('checked', false);
+        }
+    });
     
     var links = [];
     $('.descargar').click(function () {
