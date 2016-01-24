@@ -2,18 +2,23 @@
     ViewBag.Title = "MoTube";
 }
 
-<div class="jumbotron" style="padding-top: 10px; padding-bottom: 15px;margin-bottom: 0px">
+<script type="text/javascript" src="~/Scripts/index.js"></script>
+
+<div id="fondo" class="jumbotron" style="padding-top: 10px;padding-bottom:0px ;margin-bottom: 0px">
     <h3 style="margin-top: 5px">MoTube</h3>
     <div class="row">
         <div class="col-md-12">
-            @using (Ajax.BeginForm("Index", "Home", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "gridContainer" }, new { @class = "" }))
+            @using (Ajax.BeginForm("Index", "Home", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "gridContainer", OnBegin = "isValid" }, new { id = "filtroForm" }))
             {
-                <div class="input-group">
+                <div id="filtrogroup" style="margin-bottom: 20px;">
+                    <div class="input-group">
 
-                    <input type="text" name="filtro" class="form-control" placeholder="Search for..." autocomplete="off" autofocus>
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="submit" >Buscar!</button>
-                    </span>
+                        <input type="text" name="filtro" id="filtro" class="form-control"  placeholder="Search for..." autocomplete="off" autofocus>
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Buscar!</button>
+                        </span>
+                    </div>
+                    <span id="helpBlock" class="help-block" style="display:none; margin: 0px">Ingrese el Criterio de Búsqueda</span>
                 </div>
             }
         </div>
