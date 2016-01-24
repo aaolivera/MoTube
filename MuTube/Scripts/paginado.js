@@ -33,14 +33,15 @@
                     "<tr><td class=\"sinBorde\" id=\"" + id + "modal\"><img src=\"image/loading.gif\"/>" + $(tema).data().nombre + "</td></tr>");
 
 
-                $.getJSON('http://www.youtubeinmp3.com/fetch/?format=JSON&video=http://www.youtube.com/watch?v=' + id, function (data) {
-                    links.push(data.link);
-                    ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-ok\"></i>&nbsp;" + $(tema).data().nombre) });
-                }).fail(function () {
-                    ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + $(tema).data().nombre) });
-                });
+                //$.getJSON('http://www.youtubeinmp3.com/fetch/?format=JSON&video=http://www.youtube.com/watch?v=' + id, function (data) {
+                //    links.push(data.link);
+                //    ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-ok\"></i>&nbsp;" + $(tema).data().nombre) });
+                //}).fail(function () {
+                //    ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + $(tema).data().nombre) });
+                //});
 
             });
+            
             $(".bs-modal-lg").modal('show');
         } else {
             MostrarAlertaError("Seleccione al menos un tema");
@@ -74,7 +75,7 @@ function MostrarAlertaError(data) {
 }
 
 function ejecutarRetrasado(accion) {
-    setTimeout( accion , 3000)
+    setTimeout( accion , 5000)
 }
 
 function pagina(id, filtro, pagina, direccion) {

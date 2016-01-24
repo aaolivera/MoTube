@@ -32,9 +32,17 @@ namespace MuTube.Controllers
         [ActionName("Index")]
         public ActionResult Listar(string filtro, string paginaId = "", bool? direccion = null, int pagina = 1)
         {
-            var resultado = _servicio.Buscar(filtro, paginaId, direccion);
-            resultado.Pagina += pagina;
-            return View("Listar", resultado);
+            try
+            {
+                var resultado = _servicio.Buscar(filtro, paginaId, direccion);
+                resultado.Pagina += pagina;
+                return View("Listar", resultado);
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = e.Message;
+            }
+            return View("Error");
         }
 
     }

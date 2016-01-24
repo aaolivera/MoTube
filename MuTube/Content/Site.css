@@ -23,11 +23,18 @@
 .modal-dialog{
 position: absolute;
 left: 50%;
-margin-left: -312px;
+/*margin-left: -312px;*/
 height: 500px;
 top: 50%;
-margin-top: -250px;
-} 
+/*margin-top: -250px;*/
+}
+.modal-dialog{
+                overflow-y: initial !important
+            }
+            .modal-body{
+                height: 250px;
+                overflow-y: auto;
+            };
 
 .table > thead > tr > th,
 .table > tbody > tr > th,

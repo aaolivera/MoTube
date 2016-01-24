@@ -28,20 +28,28 @@ namespace Servicios
 
         public Resultado Buscar(string filtro, string pageId, bool? siguiente = null)
         {
-            var listRequest = _youtube.Search.List("snippet");
-            
-            listRequest.Q = filtro;
-            listRequest.MaxResults = 20;
-            listRequest.Type = "video";
-            listRequest.PageToken = pageId;
-            listRequest.VideoDuration = SearchResource.ListRequest.VideoDurationEnum.Medium;
-            var resp = listRequest.Execute();
+            try
+            {
+                var listRequest = _youtube.Search.List("snippet");
 
-            var resultado = GenerarResultado(resp);
-            resultado.Filtro = filtro;
-            resultado.Pagina = siguiente == true ? 1 : siguiente == null ? 0 : -1;
-            resultado.CantidadDePaginas = (resp.PageInfo.TotalResults??0)/(resp.PageInfo.ResultsPerPage ??1);
-            return resultado;
+                listRequest.Q = filtro;
+                listRequest.MaxResults = 20;
+                listRequest.Type = "video";
+                listRequest.PageToken = pageId;
+                listRequest.VideoDuration = SearchResource.ListRequest.VideoDurationEnum.Medium;
+                var resp = listRequest.Execute();
+
+                var resultado = GenerarResultado(resp);
+                resultado.Filtro = filtro;
+                resultado.Pagina = siguiente == true ? 1 : siguiente == null ? 0 : -1;
+                resultado.CantidadDePaginas = (resp.PageInfo.TotalResults ?? 0) / (resp.PageInfo.ResultsPerPage ?? 1);
+                return resultado;
+            }
+            catch
+            {
+                throw new Exception("El Servicio de Busqueda no se encuentra disponible en este momento, intente mas tarde.");
+            }
+            
         }
 
         public Archivo Descargar(string videoId)
