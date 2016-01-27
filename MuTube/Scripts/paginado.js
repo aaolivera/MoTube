@@ -30,37 +30,48 @@
                 var id = $(tema).attr('id');
                 $('.tablaDescargados').html($('.tablaDescargados').html() +
 
-                    "<tr><td class=\"sinBorde\" id=\"" + id + "modal\"><img src=\"image/loading.gif\"/>" + $(tema).data().nombre + "</td></tr>");
+                    "<tr><td class=\"sinBorde\" id=\"" + id + "modal\"><img src=\""+ $('#loading').val() +"\"/>" + $(tema).data().nombre + "</td></tr>");
 
 
-                //$.getJSON('http://www.youtubeinmp3.com/fetch/?format=JSON&video=http://www.youtube.com/watch?v=' + id, function (data) {
-                //    links.push(data.link);
-                //    ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-ok\"></i>&nbsp;" + $(tema).data().nombre) });
-                //}).fail(function () {
-                //    ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + $(tema).data().nombre) });
-                //});
+                $.getJSON('http://www.youtubeinmp3.com/fetch/?format=JSON&video=http://www.youtube.com/watch?v=' + id, function (data) {
+                    links.push(data.link);
+                    ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-ok\"></i>&nbsp;" + $(tema).data().nombre) });
+                }).fail(function () {
+                    ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + $(tema).data().nombre) });
+                });
 
             });
             
-            $(".bs-modal-lg").modal('show');
+            $("#myModal").modal('show');
         } else {
             MostrarAlertaError("Seleccione al menos un tema");
         }
-
     });
     setInterval(downloadAll, 3000);
     
     function downloadAll() {
-        if (links.length > 0) {//de dond saco data??
+        if (links.length > 0) {
             file = links.pop();
             var downloadLink = document.createElement("iframe");
-            downloadLink.style.display = "none";
+            //downloadLink.style.display = "none";
             downloadLink.src = file;
             document.body.appendChild(downloadLink);
-            //downloadLink.click();
-            //document.body.removeChild(downloadLink);
         }        
     }
+
+    $('.verVideo').click(function () {
+        var item = $(this);
+        var href = item.attr("href");
+        $("#ytplayer").attr("src", href);
+        $("#yttitle").html(item.data().name);
+        $("#myModal2").modal('show');
+        return false;
+    });
+
+    $('#myModal2').on('hidden.bs.modal', function () {
+        $("#ytplayer").attr("src", "");
+        $("#yttitle").html("Cargando...");
+    })
 });
 
 function MostrarAlertaError(data) {

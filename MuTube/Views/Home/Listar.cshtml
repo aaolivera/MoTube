@@ -5,6 +5,7 @@
 }
 <script type="text/javascript" src="~/Scripts/paginado.js"></script>
 
+@Html.Hidden("loading",Url.Content("Image/loading.gif"))
 <table style="width: 100%;margin-bottom:10px ;" class="table table-striped">
     <tr>
         <th style="width: 15px"><input id="todos" data-nombre="todos" class="todos" type="checkbox" /></th>
@@ -19,7 +20,7 @@
             <td class="text-center"><input id="@item.Id" data-nombre="@item.Nombre" class="checkDescargar" type="checkbox" /></td>
             <td>@item.Nombre</td>
             @*<td>@item.Autor</td>*@
-            <td class="text-center"><a href="https://www.youtube.com/watch?v=@item.Id" target="_blank"><img src="~/Image/yt.png" /></a></td>
+            <td class="text-center"><a class="verVideo"data-name="@item.Nombre" href="https://www.youtube.com/embed/@item.Id?fs=0&modestbranding=1&rel=0&showinfo=0&color=white&iv_load_policy=3&theme=light"><img src="~/Image/yt.png" /></a></td>
             <td class="text-center">@item.Duracion</td>
         </tr>
     }
@@ -61,8 +62,3 @@
         <td style="width: 100px" class="sinBorde">@Model.Pagina / @Model.CantidadDePaginas</td>
     </tr>
 </table>
-
-@*<div id="alertaError" data-mensaje="aaaaaaaaaa" class="alert alert-danger fade in  centro-pantalla" style="display:none">
-    <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></i>
-    <span ></span>
-</div>*@
