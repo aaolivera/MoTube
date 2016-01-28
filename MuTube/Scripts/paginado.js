@@ -21,7 +21,7 @@
         }
     });
     
-    var links = [];
+    
     $('.descargar').click(function () {
         $('.tablaDescargados').html('');
         if ($("input.checkDescargar:checked").length > 0) {
@@ -33,11 +33,14 @@
                     "<tr><td class=\"sinBorde\" id=\"" + id + "modal\"><img src=\""+ $('#loading').val() +"\"/>" + $(tema).data().nombre + "</td></tr>");
 
 
-                $.getJSON('http://www.youtubeinmp3.com/fetch/?format=JSON&video=http://www.youtube.com/watch?v=' + id, function (data) {
-                    links.push(data.link);
-                    ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-ok\"></i>&nbsp;" + $(tema).data().nombre) });
-                }).fail(function () {
-                    ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + $(tema).data().nombre) });
+                $.get(pushUrl(id), function (data) {
+                    if (esValido(data)) {
+                        ids.push({ id: id, nombre: $(tema).data().nombre });
+                    } else {
+                        ejecutarRetrasado(function () { $("#" + id + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + $(tema).data().nombre) });
+                    }
+                }).error(function (d) {
+                    ejecutarRetrasado(function () { $("#" + id + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + $(tema).data().nombre) });
                 });
 
             });
@@ -48,16 +51,8 @@
         }
     });
     setInterval(downloadAll, 3000);
+    setInterval(infoAll, 2000);
     
-    function downloadAll() {
-        if (links.length > 0) {
-            file = links.pop();
-            var downloadLink = document.createElement("iframe");
-            //downloadLink.style.display = "none";
-            downloadLink.src = file;
-            document.body.appendChild(downloadLink);
-        }        
-    }
 
     $('.verVideo').click(function () {
         var item = $(this);
@@ -73,6 +68,36 @@
         $("#yttitle").html("Cargando...");
     })
 });
+
+var links = [], ids = [];
+
+function infoAll() {
+    if (ids.length > 0) {
+        var idnombre = ids.pop();
+        $.get(getInfoUrl(idnombre.id), function (data) {
+            if (esValido(data)) {
+                var json = data.replace("info = ", "").replace(";", "");
+                var obj = jQuery.parseJSON(json)
+                links.push("/get?video_id=" + idnombre.id + "&ts_create=" + obj.ts_create + "&r=" + obj.r + "&h2=" + obj.h2);
+                ejecutarRetrasado(function () { $("#" + idnombre.id + "modal").html("<i class=\"glyphicon glyphicon-ok\"></i>&nbsp;" + idnombre.nombre) });
+            } else {
+                ejecutarRetrasado(function () { $("#" + idnombre.id + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + idnombre.nombre) });
+            }
+        }).error(function (d) {
+            ejecutarRetrasado(function () { $("#" + idnombre.id + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + idnombre.nombre) });
+        });
+    }
+}
+
+function downloadAll() {
+    if (links.length > 0) {
+        file = links.pop();
+        var downloadLink = document.createElement("iframe");
+        downloadLink.style.display = "none";
+        downloadLink.src = signateUrl(file);
+        document.body.appendChild(downloadLink);
+    }
+}
 
 function MostrarAlertaError(data) {
 
@@ -99,4 +124,8 @@ function pagina(id, filtro, pagina, direccion) {
             $("#gridContainer").html(data);
         }
     });
+}
+
+function esValido(data) {
+    return data != "$$$ERROR$$$" && data != "$$$LIMIT$$$";
 }
