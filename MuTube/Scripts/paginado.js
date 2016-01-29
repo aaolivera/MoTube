@@ -71,7 +71,7 @@ function downloadAll() {
         file = links.pop();
         var downloadLink = document.createElement("iframe");
         downloadLink.style.display = "none";
-        downloadLink.src = signateUrl(file);
+        downloadLink.src = file;
         document.body.appendChild(downloadLink);
     }
 }

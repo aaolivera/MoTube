@@ -3,7 +3,7 @@
 @{
     Layout = null;
 }
-<script type="text/javascript" src="~/Scripts/signature.js"></script>
+
 <script type="text/javascript" src="~/Scripts/paginado.js"></script>
 
 @Html.Hidden("loading",Url.Content("Image/loading.gif"))
@@ -21,7 +21,7 @@
             <td class="text-center"><input id="@item.Id" data-nombre="@item.Nombre" class="checkDescargar" type="checkbox" /></td>
             <td>@item.Nombre</td>
             @*<td>@item.Autor</td>*@
-            <td class="text-center"><a class="verVideo"data-name="@item.Nombre" href="https://www.youtube.com/embed/@item.Id?fs=0&modestbranding=1&rel=0&showinfo=0&color=white&iv_load_policy=3&theme=light"><img src="~/Image/yt.png" /></a></td>
+            <td class="text-center"><a class="verVideo"data-name="@item.Nombre" href="https://www.youtube.com/embed/@item.Id?rel=0&showinfo=0&color=white&iv_load_policy=3&theme=light"><img src="~/Image/yt.png" /></a></td>
             <td class="text-center">@item.Duracion</td>
         </tr>
     }
