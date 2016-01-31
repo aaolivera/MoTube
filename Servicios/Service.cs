@@ -33,7 +33,7 @@ namespace Servicios
                 var listRequest = _youtube.Search.List("snippet");
 
                 listRequest.Q = filtro;
-                listRequest.MaxResults = 20;
+                listRequest.MaxResults = 15;
                 listRequest.Type = "video";
                 listRequest.PageToken = pageId;
                 listRequest.VideoDuration = SearchResource.ListRequest.VideoDurationEnum.Medium;

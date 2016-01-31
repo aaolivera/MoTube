@@ -1,4 +1,5 @@
-﻿$(document).ready(function() {
+﻿$(document).ready(function () {
+    $.unblockUI();
     $('.centro-pantalla').css({
         position: 'fixed',
         left: ($(window).width() - $('.centro-pantalla').outerWidth() )/ 2,
@@ -23,31 +24,25 @@
     
     
     $('.descargar').click(function () {
+        versionDeModal.n++;
+        versionDeModal.a = true;
         $('.tablaDescargados').html('');
         if ($("input.checkDescargar:checked").length > 0) {
             $("input.checkDescargar:checked").each(function () {
                 var tema = this;
                 var id = $(tema).attr('id');
-                $('.tablaDescargados').html($('.tablaDescargados').html() +
+                var nombre = $(tema).data().nombre;
 
-                    "<tr><td class=\"sinBorde\" id=\"" + id + "modal\"><img src=\""+ $('#loading').val() +"\"/>" + $(tema).data().nombre + "</td></tr>");
-
-
-                    $.getJSON('http://www.youtubeinmp3.com/fetch/?format=JSON&video=http://www.youtube.com/watch?v=' + id, function (data) {
-                        links.push(data.link);
-                        ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-ok\"></i>&nbsp;" + $(tema).data().nombre) });
-                    }).fail(function () {
-                        ejecutarRetrasado(function () { $("#" + $(tema).attr('id') + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + $(tema).data().nombre) });
-                    });
-
+                $('.tablaDescargados').html($('.tablaDescargados').html() + "<tr><td class=\"sinBorde\" id=\"" + id + "modal\">"+cargando(nombre)+"</td></tr>");
+                procesar(id, nombre);
             });
             
-            $("#myModal").modal('show');
+            $("#myModal").modal('show');            
         } else {
             MostrarAlertaError("Seleccione al menos un tema");
         }
     });
-    setInterval(downloadAll, 3000);   
+    setInterval(downloadAll, 3000);
 
     $('.verVideo').click(function () {
         var item = $(this);
@@ -62,9 +57,34 @@
         $("#ytplayer").attr("src", "");
         $("#yttitle").html("Cargando...");
     })
+
+    $('#myModal').on('hidden.bs.modal', function () {
+        versionDeModal.a = false;
+    })
+
+    $(document).on("click", ".reintentar", function () {
+        elemento = $(this);
+        $("#" + elemento.data().id + "modal").html(cargando(elemento.data().nombre))
+        procesar(elemento.data().id, elemento.data().nombre);
+    })
 });
 
 var links = [];
+var versionDeModal = {n : 1, a : false};
+
+function procesar(id, nombre) {
+    var version = versionDeModal.n;
+    $.getJSON('http://www.youtubeinmp3.com/fetch/?format=JSON&video=http://www.youtube.com/watch?v=' + id, function (data) {
+        if (version == versionDeModal.n && versionDeModal.a) {
+            links.push(data.link);
+            ejecutarRetrasado(function () { $("#" + id + "modal").html("<i class=\"glyphicon glyphicon-ok\"></i>&nbsp;" + nombre) });
+        }        
+    }).fail(function () {
+        if (version == versionDeModal.n && versionDeModal.a) {
+            ejecutarRetrasado(function () { $("#" + id + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + nombre + "&nbsp;&nbsp;-&nbsp;&nbsp;<i style=\"cursor: pointer\" data-id=\"" + id + "\" data-nombre=\"" + nombre + "\" class=\"reintentar glyphicon glyphicon-repeat\"></i>&nbsp;Error al procesar") });
+        }
+    });
+}
 
 function downloadAll() {
     if (links.length > 0) {
@@ -92,6 +112,14 @@ function ejecutarRetrasado(accion) {
 }
 
 function pagina(id, filtro, pagina, direccion) {
+    //
+    var correccion = -1;
+    if (direccion) {
+        correccion = 1;
+    }
+    BloquearPantalla(filtro, pagina + correccion);
+    //
+
     $.ajax({
         url: "\\",
         dataType: 'html',
@@ -99,6 +127,9 @@ function pagina(id, filtro, pagina, direccion) {
         data: { paginaId: id, filtro: filtro,pagina : pagina, direccion: direccion },
         success: function (data) {
             $("#gridContainer").html(data);
+        },
+        complete: function(data) {
+            $.unblockUI();
         }
     });
 }

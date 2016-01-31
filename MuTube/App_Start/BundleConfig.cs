@@ -12,7 +12,8 @@ namespace MuTube
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-migrate*",
                         "~/Scripts/jquery.unobtrusive-ajax*",
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/jquery.validate*",
+                        "~/Scripts/jquery.blockUI.js"));
 
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
