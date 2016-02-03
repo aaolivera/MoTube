@@ -4,8 +4,6 @@
     Layout = null;
 }
 
-<script type="text/javascript" src="~/Scripts/paginado.js"></script>
-
 <table style="width: 100%;margin-bottom:10px ;" class="table table-striped">
     <tr>
         <th style="width: 15px"><input id="todos" data-nombre="todos" class="todos" type="checkbox" /></th>
@@ -26,39 +24,39 @@
     }
 </table>
 <table class="table" style="margin-bottom:5px">
-    <tr>
-        <td style="width: 100px" class="descargar sinBorde">
+    <tr class="row">
+        <td class="col-md-1 descargar sinBorde">
             <button type="button" class="btn btn-primary">
                 <i class="glyphicon glyphicon-download-alt text-center"></i>&nbsp;Descargar
             </button>
         </td>
             @if (!string.IsNullOrEmpty(Model.Anterior))
             {
-                <td class="col-lg-6 sinBorde" style="width:40%">
+                <td class="col-md-5 sinBorde">
                     <div id="alertaError" data-mensaje="aaaaaaaaaa" class="alert alert-danger fade in col-lg-8" style="display:none;padding: 7px;margin-bottom:0">
-                        <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></i>
+                        <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="vertical-align: middle"></i>
                         <span></span>
                     </div>
-                    <i id="prev" data-id="@Model.Anterior" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-left pull-right" style="cursor: pointer"></i>
+                    <i id="prev" data-id="@Model.Anterior" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-left pull-right btn-lg" style="cursor: pointer;vertical-align: middle"></i>
                 </td>
             }
             else
             {
-                 <td class="col-lg-6 sinBorde" style="width:40%">
+                 <td class="col-md-5 sinBorde">
                      <div id="alertaError" data-mensaje="aaaaaaaaaa" class="alert alert-danger fade in col-lg-8" style="display:none;padding: 7px;margin-bottom:0">
-                         <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></i>
+                         <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="vertical-align: middle"></i>
                          <span></span>
                      </div>
         &nbsp;</td>
              }
              @if (!string.IsNullOrEmpty(Model.Siguiente))
              {
-                 <td class="col-lg-6 sinBorde" style="width:40%"><i id="next" data-id="@Model.Siguiente" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-right" style="cursor: pointer"></i></td>
+                 <td class="col-md-1 sinBorde"><i id="next" data-id="@Model.Siguiente" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-right btn-lg" style="cursor: pointer;vertical-align: middle"></i></td>
              }
              else
              {
-                 <td class="col-lg-6 sinBorde" style="width:40%">&nbsp;</td>
+                 <td class="col-md-1 sinBorde">&nbsp;</td>
              }
-        <td style="width: 100px" class="sinBorde">@Model.Pagina / @Model.CantidadDePaginas</td>
+        <td style="text-align:right; vertical-align:middle" class="col-md-5 sinBorde">Pagina: @Model.Pagina / @(Model.CantidadDePaginas == 99 ? "+99" : Model.CantidadDePaginas.ToString())</td>
     </tr>
 </table>

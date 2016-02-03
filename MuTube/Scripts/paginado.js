@@ -1,37 +1,52 @@
 ﻿$(document).ready(function () {
-    $.unblockUI();
     $('.centro-pantalla').css({
         position: 'fixed',
         left: ($(window).width() - $('.centro-pantalla').outerWidth() )/ 2,
         top: ($(window).height() - $('.centro-pantalla').outerHeight())  / 3
     });
 
-    $('#prev').click(function () {
+    $("input.checkDescargar").each(function () {
+        var tema = this;
+        var id = $(tema).attr('id');
+        if (seleccionados.hasOwnProperty(id)) {
+            $(tema).prop('checked', true);
+        }
+    });
+
+    $(document).on("click", "#prev", function () {
         pagina($('#prev').data().id, $('#prev').data().filtro, $('#prev').data().pagina, false);
     });
 
-    $('#next').click(function () {
+    $(document).on("click", '#next', function () {
         pagina($('#next').data().id, $('#next').data().filtro, $('#next').data().pagina, true);
     });
 
-    $('#todos').change(function () {
+    $(document).on("click", '#todos', function () {
         if ($('#todos').is(":checked")) {
-            $("input.checkDescargar").prop('checked', true);
+            $("input.checkDescargar").prop('checked', true).trigger("change");
         } else {
-            $("input.checkDescargar").prop('checked', false);
+            $("input.checkDescargar").prop('checked', false).trigger("change");
         }
     });
     
-    
-    $('.descargar').click(function () {
+    $(document).on("change", "input.checkDescargar", function () {
+        var tema = this;
+        var id = $(tema).attr('id');
+        var nombre = $(tema).data().nombre;
+        if ($(this).is(":checked")) {
+            seleccionados[id] = nombre;
+        } else {
+            delete seleccionados[id];
+        }
+    });
+
+    $(document).on("click", '.descargar', function () {
         versionDeModal.n++;
         versionDeModal.a = true;
         $('.tablaDescargados').html('');
-        if ($("input.checkDescargar:checked").length > 0) {
-            $("input.checkDescargar:checked").each(function () {
-                var tema = this;
-                var id = $(tema).attr('id');
-                var nombre = $(tema).data().nombre;
+        if (Object.keys(seleccionados).length > 0) {
+            Object.keys(seleccionados).forEach(function (id) {
+                var nombre = seleccionados[id];
 
                 $('.tablaDescargados').html($('.tablaDescargados').html() + "<tr><td class=\"sinBorde\" id=\"" + id + "modal\">"+cargando(nombre)+"</td></tr>");
                 procesar(id, nombre);
@@ -44,7 +59,7 @@
     });
     setInterval(downloadAll, 3000);
 
-    $('.verVideo').click(function () {
+    $(document).on("click", '.verVideo', function () {
         var item = $(this);
         var href = item.attr("href");
         $("#ytplayer").attr("src", href);
@@ -105,10 +120,6 @@ function MostrarAlertaError(data) {
     }
     $("#alertaError").show();
     $("#alertaError").delay(500).addClass("in").fadeOut(2500);
-}
-
-function ejecutarRetrasado(accion) {
-    setTimeout( accion , 5000)
 }
 
 function pagina(id, filtro, pagina, direccion) {

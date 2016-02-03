@@ -16,9 +16,11 @@
         flag = true;
     });
     
-
+    
 });
 var interval;
+var seleccionados = {};
+
 function isValid() {
     if ($('#filtro').val() == 0) {
         $('#filtrogroup').addClass('has-error');
@@ -41,7 +43,7 @@ function removerValid()
 }
 
 function BloquearPantalla(filtro, pagina) {
-    var mensaje = 'Buscando ' + filtro;
+    var mensaje = 'Buscando "' + filtro + '"';
     if (pagina != null) {
         mensaje += ' - Pagina ' + pagina;
     }
@@ -50,4 +52,8 @@ function BloquearPantalla(filtro, pagina) {
 
 function cargando(nombre) {
     return "<img src=\"" + $('#loading').val() + "\"/>" + nombre;
+}
+
+function ejecutarRetrasado(accion) {
+    setTimeout(accion, 5000)
 }
