@@ -5,14 +5,6 @@
         top: ($(window).height() - $('.centro-pantalla').outerHeight())  / 3
     });
 
-    $("input.checkDescargar").each(function () {
-        var tema = this;
-        var id = $(tema).attr('id');
-        if (seleccionados.hasOwnProperty(id)) {
-            $(tema).prop('checked', true);
-        }
-    });
-
     $(document).on("click", "#prev", function () {
         pagina($('#prev').data().id, $('#prev').data().filtro, $('#prev').data().pagina, false);
     });
@@ -138,9 +130,20 @@ function pagina(id, filtro, pagina, direccion) {
         data: { paginaId: id, filtro: filtro,pagina : pagina, direccion: direccion },
         success: function (data) {
             $("#gridContainer").html(data);
+            marcarSeleccionados();
         },
         complete: function(data) {
             $.unblockUI();
+        }
+    });
+}
+
+function marcarSeleccionados() {
+    $("input.checkDescargar").each(function () {
+        var tema = this;
+        var id = $(tema).attr('id');
+        if (seleccionados.hasOwnProperty(id)) {
+            $(tema).prop('checked', true);
         }
     });
 }

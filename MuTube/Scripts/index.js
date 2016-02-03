@@ -31,6 +31,7 @@ function isValid() {
         return false;
     }
     BloquearPantalla($('#filtro').val())
+    seleccionados = {};
     return true;
 }
 
