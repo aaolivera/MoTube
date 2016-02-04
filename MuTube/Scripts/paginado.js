@@ -37,11 +37,18 @@
         versionDeModal.a = true;
         $('.tablaDescargados').html('');
         if (Object.keys(seleccionados).length > 0) {
+            var count = Object.keys(seleccionados).length;
+            var oncomplete;
             Object.keys(seleccionados).forEach(function (id) {
                 var nombre = seleccionados[id];
+                $('.tablaDescargados').html($('.tablaDescargados').html() + "<tr><td class=\"sinBorde\" id=\"" + id + "modal\">" + cargando(nombre) + "</td></tr>");
 
-                $('.tablaDescargados').html($('.tablaDescargados').html() + "<tr><td class=\"sinBorde\" id=\"" + id + "modal\">"+cargando(nombre)+"</td></tr>");
-                procesar(id, nombre);
+                if (!--count) {
+                    oncomplete = function () {
+                        $("#myModal-cerrar").prop('disabled', false);
+                    }
+                }
+                procesar(id, nombre, oncomplete);
             });
             
             $("#myModal").modal('show');            
@@ -79,7 +86,7 @@
 var links = [];
 var versionDeModal = {n : 1, a : false};
 
-function procesar(id, nombre) {
+function procesar(id, nombre,onComplete) {
     var version = versionDeModal.n;
     $.getJSON('http://www.youtubeinmp3.com/fetch/?format=JSON&video=http://www.youtube.com/watch?v=' + id, function (data) {
         if (version == versionDeModal.n && versionDeModal.a) {
@@ -88,7 +95,11 @@ function procesar(id, nombre) {
         }        
     }).fail(function () {
         if (version == versionDeModal.n && versionDeModal.a) {
-            ejecutarRetrasado(function () { $("#" + id + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + nombre + "&nbsp;&nbsp;-&nbsp;&nbsp;<i style=\"cursor: pointer\" data-id=\"" + id + "\" data-nombre=\"" + nombre + "\" class=\"reintentar glyphicon glyphicon-repeat\"></i>&nbsp;Error al procesar") });
+            ejecutarRetrasado(function () { $("#" + id + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + nombre + "&nbsp;&nbsp;-&nbsp;&nbsp;<i style=\"cursor: pointer\" data-id=\"" + id + "\" data-nombre=\"" + nombre + "\" class=\"reintentar glyphicon glyphicon-repeat\"></i>&nbsp;Error al procesar") }, 700);
+        }
+    }).complete(function () {
+        if (onComplete != null) {
+            onComplete();
         }
     });
 }

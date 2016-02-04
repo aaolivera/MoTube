@@ -55,6 +55,7 @@ function cargando(nombre) {
     return "<img src=\"" + $('#loading').val() + "\"/>" + nombre;
 }
 
-function ejecutarRetrasado(accion) {
-    setTimeout(accion, 5000)
+function ejecutarRetrasado(accion, tiempo) {
+    if (tiempo == null) tiempo = 5000;
+    setTimeout(accion, tiempo)
 }
