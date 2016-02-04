@@ -38,16 +38,15 @@
         $('.tablaDescargados').html('');
         if (Object.keys(seleccionados).length > 0) {
             var count = Object.keys(seleccionados).length;
-            var oncomplete;
+            var oncomplete = function () {
+                if (!--count) {
+                    $("#myModal-cerrar").prop('disabled', false);
+                }                
+            };
             Object.keys(seleccionados).forEach(function (id) {
                 var nombre = seleccionados[id];
                 $('.tablaDescargados').html($('.tablaDescargados').html() + "<tr><td class=\"sinBorde\" id=\"" + id + "modal\">" + cargando(nombre) + "</td></tr>");
 
-                if (!--count) {
-                    oncomplete = function () {
-                        $("#myModal-cerrar").prop('disabled', false);
-                    }
-                }
                 procesar(id, nombre, oncomplete);
             });
             
@@ -95,7 +94,7 @@ function procesar(id, nombre,onComplete) {
         }        
     }).fail(function () {
         if (version == versionDeModal.n && versionDeModal.a) {
-            ejecutarRetrasado(function () { $("#" + id + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + nombre + "&nbsp;&nbsp;-&nbsp;&nbsp;<i style=\"cursor: pointer\" data-id=\"" + id + "\" data-nombre=\"" + nombre + "\" class=\"reintentar glyphicon glyphicon-repeat\"></i>&nbsp;Error al procesar") }, 700);
+            ejecutarRetrasado(function () { $("#" + id + "modal").html("<i class=\"glyphicon glyphicon-remove\"></i>&nbsp;" + nombre + "&nbsp;&nbsp;-&nbsp;&nbsp;<i style=\"cursor: pointer\" data-id=\"" + id + "\" data-nombre=\"" + nombre + "\" class=\"reintentar glyphicon glyphicon-repeat\"></i>&nbsp;Error al procesar")},700);
         }
     }).complete(function () {
         if (onComplete != null) {
@@ -110,6 +109,7 @@ function downloadAll() {
         var downloadLink = document.createElement("iframe");
         downloadLink.style.display = "none";
         downloadLink.src = file;
+        downloadLink.onload = function () { alert("hola!") };
         document.body.appendChild(downloadLink);
     }
 }
