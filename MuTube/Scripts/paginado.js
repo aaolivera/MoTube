@@ -154,7 +154,6 @@ function downloadAll() {
         var downloadLink = document.createElement("iframe");
         downloadLink.style.display = "none";
         downloadLink.src = file;
-        downloadLink.onload = function () { alert("hola!") };
         document.body.appendChild(downloadLink);
     }
 }
