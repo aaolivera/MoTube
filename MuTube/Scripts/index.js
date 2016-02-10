@@ -19,7 +19,6 @@
     
 });
 var interval;
-var seleccionados = {};
 
 function isValid() {
     if ($('#filtro').val() == 0) {
