@@ -175,6 +175,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Image\loading.gif" />
     <Content Include="Image\yt.png" />
+    <Content Include="resources\favicon.ico" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\motube - FTP.pubxml" />
