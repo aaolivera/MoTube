@@ -37,8 +37,9 @@ $(document).ready(function () {
         versionDeModal.n++;
         versionDeModal.a = true;
         $('.tablaDescargados').html('');
-        $("#myModal").modal('show');
+        
         if (Object.keys(seleccionados).length > 0) {
+            $("#myModal").modal('show');
             var count = Object.keys(seleccionados).length;
             var oncomplete = function () {
                 if (!--count) {
