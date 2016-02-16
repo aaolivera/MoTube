@@ -36,12 +36,20 @@ namespace MuTube.Controllers
             {
                 var resultado = _servicio.Buscar(filtro, paginaId, direccion);
                 resultado.Pagina += pagina;
+
+                if (resultado.Temas.Count == 0) throw new Exception("La Búsqueda no generó resultados!");
                 return View("Listar", resultado);
             }
             catch (Exception e)
             {
                 ViewBag.Error = e.Message;
             }
+            return View("Error");
+        }
+
+        public ActionResult Error (string mensaje)
+        {
+            ViewBag.Error = mensaje;
             return View("Error");
         }
 
