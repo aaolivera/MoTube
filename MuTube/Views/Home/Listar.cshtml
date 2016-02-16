@@ -37,7 +37,7 @@
                         <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="vertical-align: middle"></i>
                         <span></span>
                     </div>
-                    <i id="prev" data-id="@Model.Anterior" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-left pull-right btn-lg" style="cursor: pointer;vertical-align: middle"></i>
+                    <i id="prev" data-id="@Model.Anterior" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-left pull-right btn btn-primary" style="cursor: pointer;vertical-align: middle"></i>
                 </td>
             }
             else
@@ -51,7 +51,7 @@
              }
              @if (!string.IsNullOrEmpty(Model.Siguiente))
              {
-                 <td class="col-md-1 sinBorde"><i id="next" data-id="@Model.Siguiente" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-right btn-lg" style="cursor: pointer;vertical-align: middle"></i></td>
+                 <td class="col-md-1 sinBorde"><i id="next" data-id="@Model.Siguiente" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-right btn btn-primary" style="cursor: pointer;vertical-align: middle"></i></td>
              }
              else
              {
