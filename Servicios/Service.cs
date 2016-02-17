@@ -36,7 +36,9 @@ namespace Servicios
                 listRequest.MaxResults = 15;
                 listRequest.Type = "video";
                 listRequest.PageToken = pageId;
-                listRequest.VideoDuration = SearchResource.ListRequest.VideoDurationEnum.Medium;
+                listRequest.RegionCode = "AR";
+                //listRequest.Order = SearchResource.ListRequest.OrderEnum.VideoCount;
+                listRequest.VideoDuration = SearchResource.ListRequest.VideoDurationEnum.Medium| SearchResource.ListRequest.VideoDurationEnum.Short__;
                 var resp = listRequest.Execute();
 
                 var resultado = GenerarResultado(resp);

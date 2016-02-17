@@ -27,9 +27,11 @@
 
         $('#accionSeleccionada').html(seleccionado.data().accion + "&nbsp;");
         $('#accionSeleccionada').data().val = seleccionado.data().val;
-        
+        mensajepopover = seleccionado.data().help;
+        $('#botonAccion').html(seleccionado.data().botonaccion);
     })
-    $('#help').popover()
+    var mensajepopover = $('.accion').first().data().help;
+    $('#help').popover('destroy').popover({ content: function () { return mensajepopover; } })
 });
 var interval;
 
