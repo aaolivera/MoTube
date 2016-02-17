@@ -1,11 +1,13 @@
 ﻿$(document).ready(function () {
     var flag = true;
     $('#filtro').keydown(function () {
+        //Quita error al escribir algo
         removerValid();
         flag = false;
     });
 
     $(document).keydown(function (e) {
+        //Cambia de pagina con flechitas
         var code = e.keyCode || e.which;
         if (code == 37 && flag) {
             $('#prev').trigger("click");
@@ -16,7 +18,18 @@
         flag = true;
     });
     
-    
+    $('.accion').click(function () {
+        var seleccionado = $(this);
+        $('.accion i').each(function () {
+            $(this).addClass('hide');            
+        });
+        seleccionado.find('i').removeClass('hide');
+
+        $('#accionSeleccionada').html(seleccionado.data().accion + "&nbsp;");
+        $('#accionSeleccionada').data().val = seleccionado.data().val;
+        
+    })
+    $('#help').popover()
 });
 var interval;
 

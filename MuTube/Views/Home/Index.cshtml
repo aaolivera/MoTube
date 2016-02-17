@@ -13,14 +13,22 @@
             {
                 <div id="filtrogroup" style="margin-bottom: 20px;">
                     <div class="input-group">
-
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="accionSeleccionada" data-val="0">&nbsp;Buscar Mp3&nbsp;</span><span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="accion" data-val="0" data-accion="&nbsp;Buscar Mp3"><i class="glyphicon glyphicon-ok"></i><span>&nbsp;Buscar Mp3</span></a></li>
+                                <li><a href="#" class="accion" data-val="1" data-accion="&nbsp;Buscar Mp4"><i class="glyphicon glyphicon-ok hide"></i><span>&nbsp;Buscar Mp4</span></a></li>
+                                <li><a href="#" class="accion" data-val="2" data-accion="&nbsp;Descargar Link"><i class="glyphicon glyphicon-ok hide"></i><span>&nbsp;Descargar Link</span></a></li>
+                            </ul>
+                            <button type="button" class="btn btn-default" aria-label="Help" id="help" data-trigger="focus"  data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."><span class="glyphicon glyphicon-question-sign"></span></button>
+                        </div>
                         <input type="text" name="filtro" id="filtro" class="form-control"  placeholder="Search for..." autocomplete="off" autofocus>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">Buscar!</button>
                         </span>
                     </div>
                     <span id="helpBlock" class="help-block" style="display:none; margin: 0px">Ingrese el Criterio de Búsqueda</span>
-                </div>
+                </div>                
             }
         </div>
     </div>
