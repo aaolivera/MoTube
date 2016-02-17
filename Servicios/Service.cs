@@ -43,7 +43,8 @@ namespace Servicios
                 resultado.Filtro = filtro;
                 resultado.Pagina = siguiente == true ? 1 : siguiente == null ? 0 : -1;
                 resultado.CantidadDePaginas = (resp.PageInfo.TotalResults ?? 0) / (resp.PageInfo.ResultsPerPage ?? 1);
-                resultado.CantidadDePaginas = resultado.CantidadDePaginas > 99 ? 99 : resultado.CantidadDePaginas;
+                resultado.CantidadDePaginas = resultado.CantidadDePaginas > 9999 ? 9999 : resultado.CantidadDePaginas;
+                resultado.CantidadDePaginas = resultado.CantidadDePaginas == 0 ? 1 : resultado.CantidadDePaginas;
                 resultado.Temas = resultado.Temas.OrderBy(x => x.Duracion).ToList();
                 return resultado;
             }

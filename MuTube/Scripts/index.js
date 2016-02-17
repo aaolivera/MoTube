@@ -64,10 +64,16 @@ function BloquearPantalla(filtro, pagina) {
 }
 
 function cargando(nombre) {
-    return "<img src=\"" + $('#loading').val() + "\"/>" + nombre;
+    return "<img src=\"" + $('#loading').val() + "\"/>" + strip(nombre);
 }
 
 function ejecutarRetrasado(accion, tiempo) {
     if (tiempo == null) tiempo = 5000;
     setTimeout(accion, tiempo)
+}
+
+function strip(html) {
+    var tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
 }
