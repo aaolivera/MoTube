@@ -153,6 +153,12 @@
   <data name="Error_BusquedaEnBlanco" xml:space="preserve">
     <value>Ingrese el Criterio de Búsqueda</value>
   </data>
+  <data name="Error_UrlEnBlanco" xml:space="preserve">
+    <value>Ingrese la Url de un video</value>
+  </data>
+  <data name="Error_UrlInvalida" xml:space="preserve">
+    <value>Ingrese una Url de youtube válida</value>
+  </data>
   <data name="Textbox_Principal" xml:space="preserve">
     <value>Search for...</value>
   </data>

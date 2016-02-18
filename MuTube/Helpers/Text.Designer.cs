@@ -169,6 +169,24 @@ namespace MuTube.Helpers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ingrese la Url de un video.
+        /// </summary>
+        public static string Error_UrlEnBlanco {
+            get {
+                return ResourceManager.GetString("Error_UrlEnBlanco", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingrese una Url de youtube válida.
+        /// </summary>
+        public static string Error_UrlInvalida {
+            get {
+                return ResourceManager.GetString("Error_UrlInvalida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search for....
         /// </summary>
         public static string Textbox_Principal {

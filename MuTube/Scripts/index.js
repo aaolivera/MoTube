@@ -36,12 +36,29 @@
 var interval;
 
 function isValid() {
-    if ($('#filtro').val() == 0) {
-        $('#filtrogroup').addClass('has-error');
-        $('#helpBlock').show();
-        $('#filtro').focus();
-        $('#filtrogroup').css('margin-bottom', '0px');
-        interval = setTimeout(removerValid, 5000);
+    if ($('#accionSeleccionada').data().val == 0) {
+        if ($('#filtro').val() == 0) {
+            mostrarError('#errorBusquedaBlanco');
+            return false;
+        }        
+    } else if ($('#accionSeleccionada').data().val == 1) {
+        if ($('#filtro').val() == 0) {
+            mostrarError('#errorBusquedaBlanco');
+            return false;
+        }       
+    } else if ($('#accionSeleccionada').data().val == 2) {
+        if ($('#filtro').val() == 0) {
+            mostrarError('#errorUrlEnBlanco');
+        } else if (!validarUrl($('#filtro').val())) {
+            mostrarError('#errorUrlInvalida');
+        } else {
+            seleccionados = {};
+            var videoId = $('#filtro').val().split('v=')[1].split('?')[0];
+            seleccionados[videoId] = "nombre";
+            $('#gridContainer').html('');
+            $('.descargar').trigger("click");
+            seleccionados = {};
+        }
         return false;
     }
     BloquearPantalla($('#filtro').val())
@@ -49,11 +66,21 @@ function isValid() {
     return true;
 }
 
+function mostrarError(id) {
+    $('#filtrogroup').addClass('has-error');
+    $(id).show();
+    $('#filtro').focus();
+    $('#filtrogroup').css('margin-bottom', '0px');
+    interval = setTimeout(removerValid, 5000);
+}
+
 function removerValid() 
 {
     clearTimeout(interval);
     $('#filtrogroup').removeClass('has-error');
-    $('#helpBlock').hide();
+    $('#errorBusquedaBlanco').hide();
+    $('#errorUrlEnBlanco').hide();
+    $('#errorUrlInvalida').hide();
     $('#filtrogroup').css('margin-bottom', '20px');
 }
 
@@ -78,4 +105,9 @@ function strip(html) {
     var tmp = document.createElement("DIV");
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || "";
+}
+
+function validarUrl(url) {
+    var p = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
+    return (url.match(p)) ? RegExp.$1 : false;
 }
