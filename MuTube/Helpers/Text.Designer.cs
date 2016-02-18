@@ -187,11 +187,29 @@ namespace MuTube.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search for....
+        ///   Looks up a localized string similar to Ingrese un link de youtube ej: https://www.youtube.com/watch?v=I6NOF_1kg6g.
         /// </summary>
-        public static string Textbox_Principal {
+        public static string Textbox_PrincipalLink {
             get {
-                return ResourceManager.GetString("Textbox_Principal", resourceCulture);
+                return ResourceManager.GetString("Textbox_PrincipalLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingrese el nombre del tema o de la banda.
+        /// </summary>
+        public static string Textbox_PrincipalMp3 {
+            get {
+                return ResourceManager.GetString("Textbox_PrincipalMp3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingrese el nombre del tema o de la banda.
+        /// </summary>
+        public static string Textbox_PrincipalMp4 {
+            get {
+                return ResourceManager.GetString("Textbox_PrincipalMp4", resourceCulture);
             }
         }
         

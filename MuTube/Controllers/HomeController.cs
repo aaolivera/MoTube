@@ -53,5 +53,17 @@ namespace MuTube.Controllers
             return View("Error");
         }
 
+        public JsonResult ObtenerNombrePorId(string id)
+        {
+            try
+            {
+                return Json(new { nombre = _servicio.ObtenerNombrePorId(id) }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { error = e.Message }, JsonRequestBehavior.AllowGet);
+            }            
+        }
+
     }
 }

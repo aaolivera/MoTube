@@ -29,6 +29,7 @@
         $('#accionSeleccionada').data().val = seleccionado.data().val;
         mensajepopover = seleccionado.data().help;
         $('#botonAccion').html(seleccionado.data().botonaccion);
+        $('#filtro').attr("placeholder", seleccionado.data().textbox);
     })
     var mensajepopover = $('.accion').first().data().help;
     $('#help').popover('destroy').popover({ content: function () { return mensajepopover; } })
@@ -52,12 +53,18 @@ function isValid() {
         } else if (!validarUrl($('#filtro').val())) {
             mostrarError('#errorUrlInvalida');
         } else {
-            seleccionados = {};
             var videoId = $('#filtro').val().split('v=')[1].split('?')[0];
-            seleccionados[videoId] = "nombre";
-            $('#gridContainer').html('');
-            $('.descargar').trigger("click");
-            seleccionados = {};
+            $.get($("#urlObtenerNombre").val(), { id: videoId }, function (data) {
+                if (data.error == null) {
+                    seleccionados = {};
+                    seleccionados[videoId] = data.nombre;
+                    $('#gridContainer').html('');
+                    $('.descargar').trigger("click");
+                    seleccionados = {};
+                } else {
+                    mostrarError('#errorUrlInvalida');
+                }                
+            });            
         }
         return false;
     }

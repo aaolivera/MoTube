@@ -159,8 +159,14 @@
   <data name="Error_UrlInvalida" xml:space="preserve">
     <value>Ingrese una Url de youtube válida</value>
   </data>
-  <data name="Textbox_Principal" xml:space="preserve">
-    <value>Search for...</value>
+  <data name="Textbox_PrincipalLink" xml:space="preserve">
+    <value>Ingrese un link de youtube ej: https://www.youtube.com/watch?v=I6NOF_1kg6g</value>
+  </data>
+  <data name="Textbox_PrincipalMp3" xml:space="preserve">
+    <value>Ingrese el nombre del tema o de la banda</value>
+  </data>
+  <data name="Textbox_PrincipalMp4" xml:space="preserve">
+    <value>Ingrese el nombre del tema o de la banda</value>
   </data>
   <data name="Titulo" xml:space="preserve">
     <value>Motube</value>

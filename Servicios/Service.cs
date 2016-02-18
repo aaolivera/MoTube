@@ -135,5 +135,17 @@ namespace Servicios
             resultado.Anterior = resp.PrevPageToken;
             return resultado;
         }
+
+        public string ObtenerNombrePorId(string id)
+        {
+            var listvRequest = _youtube.Videos.List("snippet");
+            listvRequest.Id = id;
+            var restp = listvRequest.Execute();
+            if(restp.Items.Count == 0)
+            {
+                throw new Exception("Url Invalida");
+            }
+            return restp.Items.First().Snippet.Title.Truncate(90);
+        }
     }
 }
