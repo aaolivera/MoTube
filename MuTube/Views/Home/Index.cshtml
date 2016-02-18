@@ -5,6 +5,7 @@
 <script type="text/javascript" src="~/Scripts/index.js"></script>
 <script type="text/javascript" src="~/Scripts/paginado.js"></script>
 @Html.Hidden("loading", Url.Content("Image/loading.gif"))
+@Html.Hidden("urlObtenerNombre", Url.Action("ObtenerNombrePorId","Home"))
 <div id="fondo" class="jumbotron" style="padding-top: 10px;padding-bottom:0px ;margin-bottom: 0px">
     <h3 style="margin-top: 5px">@Text.Titulo</h3>
     <div class="row">
@@ -16,13 +17,13 @@
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="accionSeleccionada" data-val="0">@Text.BuscarMp3&nbsp;</span><span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a href="#" class="accion" data-val="0" data-accion="@Text.BuscarMp3" data-help="@Text.BuscarMp3Help" data-botonAccion="@Text.Boton_Buscar"><i class="glyphicon glyphicon-ok"></i><span>@Text.BuscarMp3</span></a></li>
-                                <li><a href="#" class="accion hide" data-val="1" data-accion="@Text.BuscarMp4" data-help="@Text.BuscarMp4Help" data-botonAccion="@Text.Boton_Buscar"><i class="glyphicon glyphicon-ok hide"></i><span>@Text.BuscarMp4</span></a></li>
-                                <li><a href="#" class="accion" data-val="2" data-accion="@Text.DescargarLink" data-help="@Text.DescargarLinkHelp" data-botonAccion="@Text.Boton_DescargarMp3"><i class="glyphicon glyphicon-ok hide"></i><span>@Text.DescargarLink</span></a></li>
+                                <li><a href="#" class="accion" data-val="0" data-accion="@Text.BuscarMp3" data-help="@Text.BuscarMp3Help" data-botonAccion="@Text.Boton_Buscar" data-textbox="@Text.Textbox_PrincipalMp3"><i class="glyphicon glyphicon-ok"></i><span>@Text.BuscarMp3</span></a></li>
+                                <li><a href="#" class="accion" data-val="1" data-accion="@Text.BuscarMp4" data-help="@Text.BuscarMp4Help" data-botonAccion="@Text.Boton_Buscar" data-textbox="@Text.Textbox_PrincipalMp4"><i class="glyphicon glyphicon-ok hide"></i><span>@Text.BuscarMp4</span></a></li>
+                                <li><a href="#" class="accion" data-val="2" data-accion="@Text.DescargarLink" data-help="@Text.DescargarLinkHelp" data-botonAccion="@Text.Boton_DescargarMp3" data-textbox="@Text.Textbox_PrincipalLink"><i class="glyphicon glyphicon-ok hide"></i><span>@Text.DescargarLink</span></a></li>
                             </ul>
                             <button type="button" class="btn btn-default" aria-label="Help" id="help" data-trigger="focus"  data-container="body" data-toggle="popover" data-placement="bottom" ><span class="glyphicon glyphicon-question-sign"></span></button>
                         </div>
-                        <input type="text" name="filtro" id="filtro" class="form-control"  placeholder="@Text.Textbox_Principal" autocomplete="off" autofocus>
+                        <input type="text" name="filtro" id="filtro" class="form-control"  placeholder="@Text.Textbox_PrincipalMp3" autocomplete="off" autofocus>
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit" id="botonAccion">@Text.Boton_Buscar</button>
                         </span>

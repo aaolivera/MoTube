@@ -12,5 +12,6 @@ namespace Servicios
         Resultado Buscar(string filtro, string pageId, bool? siguiente = null);
         [OperationContract]
         Archivo Descargar(string videoId);
+        string ObtenerNombrePorId(string id);
     }
 }
