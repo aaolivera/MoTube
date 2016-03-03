@@ -26,24 +26,24 @@
 <table class="table" style="margin-bottom:5px">
     <tr class="row">
         <td class="col-md-1 descargar sinBorde">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary btn-sm">
                 <i class="glyphicon glyphicon-download-alt text-center"></i>&nbsp;Descargar Mp3
             </button>
         </td>
             @if (!string.IsNullOrEmpty(Model.Anterior))
             {
                 <td class="col-md-5 sinBorde">
-                    <div id="alertaError" data-mensaje="aaaaaaaaaa" class="alert alert-danger fade in col-lg-8" style="display:none;padding: 7px;margin-bottom:0">
+                    <div id="alertaError" data-mensaje="aaaaaaaaaa" class="alertaError alert alert-danger fade in col-lg-8 hidden-xs" style="display:none;padding: 5px 7px 7px;margin-bottom:0;height:30px">
                         <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="vertical-align: middle"></i>
                         <span></span>
                     </div>
-                    <i id="prev" data-id="@Model.Anterior" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-left pull-right btn btn-primary" style="cursor: pointer;vertical-align: middle"></i>
+                    <i id="prev" data-id="@Model.Anterior" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-left pull-right btn btn-primary btn-sm" style="cursor: pointer;vertical-align: middle"></i>
                 </td>
             }
             else
             {
                  <td class="col-md-5 sinBorde">
-                     <div id="alertaError" data-mensaje="aaaaaaaaaa" class="alert alert-danger fade in col-lg-8" style="display:none;padding: 7px;margin-bottom:0">
+                     <div id="alertaError" data-mensaje="aaaaaaaaaa" class="alertaError alert alert-danger fade in col-lg-8 hidden-xs" style="display:none;padding: 5px 7px 7px;margin-bottom:0;height:30px">
                          <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="vertical-align: middle"></i>
                          <span></span>
                      </div>
@@ -51,12 +51,17 @@
              }
              @if (!string.IsNullOrEmpty(Model.Siguiente))
              {
-                 <td class="col-md-1 sinBorde"><i id="next" data-id="@Model.Siguiente" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-right btn btn-primary" style="cursor: pointer;vertical-align: middle"></i></td>
+                 <td class="col-md-1 sinBorde"><i id="next" data-id="@Model.Siguiente" data-filtro="@Model.Filtro" data-pagina="@Model.Pagina" class="glyphicon glyphicon-chevron-right btn btn-primary btn-sm" style="cursor: pointer;vertical-align: middle"></i></td>
              }
              else
              {
                  <td class="col-md-1 sinBorde">&nbsp;</td>
              }
-        <td style="text-align:right; vertical-align:middle" class="col-md-5 sinBorde">Pagina: @Model.Pagina / @(Model.CantidadDePaginas == 9999 ? "9999+" : Model.CantidadDePaginas.ToString())</td>
+        <td style="text-align:right; vertical-align:middle" class="hidden-xs col-sm-5 sinBorde">Pagina: @Model.Pagina / @(Model.CantidadDePaginas == 9999 ? "9999+" : Model.CantidadDePaginas.ToString())</td>
     </tr>
 </table>
+
+    <div data-mensaje="aaaaaaaaaa" class="alertaError alert alert-danger fade in col-lg-8 hidden-sm hidden-lg" style="display:none;padding: 7px;margin-bottom:0">
+        <i class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="vertical-align: middle"></i>
+        <span></span>
+    </div>

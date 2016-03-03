@@ -181,12 +181,12 @@ function procesar(tema,i) {
 function MostrarAlertaError(data) {
 
     if (data != null) {
-        $("#alertaError span").html(data);
+        $(".alertaError span").html(data);
     } else {
-        $("#alertaError span").html($("#alertaError").data().mensaje);
+        $(".alertaError span").html($("#alertaError").data().mensaje);
     }
-    $("#alertaError").show();
-    $("#alertaError").delay(500).addClass("in").fadeOut(2500);
+    $(".alertaError").show();
+    $(".alertaError").delay(500).addClass("in").fadeOut(2500);
 }
 
 function pagina(id, filtro, pagina, direccion) {

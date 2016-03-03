@@ -19,20 +19,20 @@
         <div class="col-md-12">
             @using (Ajax.BeginForm("Index", "Home", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "gridContainer", OnBegin = "isValid", OnComplete = "$.unblockUI()" }, new { id = "filtroForm" }))
             {
-                <div id="filtrogroup" style="margin-bottom: 20px;">
+                <div id="filtrogroup" class="form-group form-group-sm" style="margin-bottom: 20px;">
                     <div class="input-group">
                         <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="accionSeleccionada" data-val="0">@Text.BuscarMp3.Split(null)[2]&nbsp;</span><span class="caret"></span></button>
+                            <button type="button" class="btn btn-default btn-sm btn-smdropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="accionSeleccionada" data-val="0">@Text.BuscarMp3.Split(null)[2]&nbsp;</span><span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a href="#" class="accion" data-val="0" data-accion="@Text.BuscarMp3" data-help="@Text.BuscarMp3Help" data-botonAccion="@Text.Boton_Buscar" data-textbox="@Text.Textbox_PrincipalMp3"><i class="glyphicon glyphicon-ok"></i><span>@Text.BuscarMp3</span></a></li>
                                 <li><a href="#" class="accion hide" data-val="1" data-accion="@Text.BuscarMp4" data-help="@Text.BuscarMp4Help" data-botonAccion="@Text.Boton_Buscar" data-textbox="@Text.Textbox_PrincipalMp4"><i class="glyphicon glyphicon-ok hide"></i><span>@Text.BuscarMp4</span></a></li>
                                 <li><a href="#" class="accion" data-val="2" data-accion="@Text.DescargarLink" data-help="@Text.DescargarLinkHelp" data-botonAccion="@Text.Boton_DescargarMp3" data-textbox="@Text.Textbox_PrincipalLink"><i class="glyphicon glyphicon-ok hide"></i><span>@Text.DescargarLink</span></a></li>
                             </ul>
-                            <button type="button" class="btn btn-default" aria-label="Help" id="help" data-trigger="focus"  data-container="body" data-toggle="popover" data-placement="bottom" ><span class="glyphicon glyphicon-question-sign"></span></button>
+                            <button type="button" class="btn btn-default btn-sm hidden-xs" aria-label="Help" id="help" data-trigger="focus"  data-container="body" data-toggle="popover" data-placement="bottom" ><span class="glyphicon glyphicon-question-sign"></span></button>
                         </div>
                         <input type="text" name="filtro" id="filtro" class="form-control"  placeholder="@Text.Textbox_PrincipalMp3" autocomplete="off" autofocus>
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit" id="botonAccion">@Text.Boton_Buscar</button>
+                            <button class="btn btn-primary btn-sm" type="submit" id="botonAccion">@Text.Boton_Buscar</button>
                         </span>
                     </div>
                     <span id="errorBusquedaBlanco" class="help-block" style="display:none; margin: 0px">@Text.Error_BusquedaEnBlanco</span>
@@ -62,7 +62,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="myModal-cerrar" disabled="disabled" data-dismiss="modal">@Text.Boton_Cerrar</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="myModal-cerrar" disabled="disabled" data-dismiss="modal">@Text.Boton_Cerrar</button>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close btn-sm" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="yttitle">@Text.Dialogo_VistaPrevia_Titulo</h4>
             </div>
             <div class="modal-body" style="height:350px; text-align: center">
