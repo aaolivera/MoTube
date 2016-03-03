@@ -79,7 +79,7 @@ namespace MuTube.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Descargar Mp3.
+        ///   Looks up a localized string similar to  Descargar.
         /// </summary>
         public static string Boton_DescargarMp3 {
             get {

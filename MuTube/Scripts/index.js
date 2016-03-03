@@ -25,7 +25,7 @@
         });
         seleccionado.find('i').removeClass('hide');
 
-        $('#accionSeleccionada').html(seleccionado.data().accion + "&nbsp;");
+        $('#accionSeleccionada').html(seleccionado.data().accion.split(" ")[2] + "&nbsp;");
         $('#accionSeleccionada').data().val = seleccionado.data().val;
         mensajepopover = seleccionado.data().help;
         $('#botonAccion').html(seleccionado.data().botonaccion);
