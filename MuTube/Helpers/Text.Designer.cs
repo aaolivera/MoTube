@@ -61,7 +61,7 @@ namespace MuTube.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Buscar!.
+        ///   Looks up a localized string similar to Buscar.
         /// </summary>
         public static string Boton_Buscar {
             get {

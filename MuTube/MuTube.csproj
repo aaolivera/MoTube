@@ -178,6 +178,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Image\bender.png" />
     <Content Include="Image\loading.gif" />
     <Content Include="Image\yt.png" />
     <Content Include="resources\favicon.ico" />

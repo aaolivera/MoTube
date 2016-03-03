@@ -33,6 +33,8 @@
     })
     var mensajepopover = $('.accion').first().data().help;
     $('#help').popover('destroy').popover({ content: function () { return mensajepopover; } })
+
+    $('#bender').tooltip();
 });
 var interval;
 

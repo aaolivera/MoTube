@@ -7,7 +7,14 @@
 @Html.Hidden("loading", Url.Content("Image/loading.gif"))
 @Html.Hidden("urlObtenerNombre", Url.Action("ObtenerNombrePorId","Home"))
 <div id="fondo" class="jumbotron" style="padding-top: 10px;padding-bottom:0px ;margin-bottom: 0px">
-    <h3 style="margin-top: 5px">@Text.Titulo</h3>
+    
+    
+    <div class="row">
+        <div class="col-md-12">
+            <a  href="#" ><img id="bender" data-toggle="tooltip" data-placement="left" title="Bajá música con Mujerzuelas y Juegos de Azar" style="position:absolute;top:-55%;right:-6%" src="@Url.Content("~/Image/bender.png")" /></a>
+            <h3 style="margin-top: 5px">@Text.Titulo - <small>descargá tus videos de youtube en formato MP3!</small></h3>
+        </div>
+    </div>    
     <div class="row">
         <div class="col-md-12">
             @using (Ajax.BeginForm("Index", "Home", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "gridContainer", OnBegin = "isValid", OnComplete = "$.unblockUI()" }, new { id = "filtroForm" }))
@@ -37,6 +44,7 @@
     </div>
     <div class="row">
         <div id="gridContainer" class="col-md-12">
+            
         </div>
     </div>
 </div>
