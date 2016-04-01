@@ -1,10 +1,37 @@
-﻿$(document).ready(function () {
+﻿var suggestCallBack;
+$(document).ready(function () {
     var flag = true;
     $('#filtro').keydown(function () {
         //Quita error al escribir algo
         removerValid();
         flag = false;
     });
+
+    
+ $("#filtro").autocomplete({
+     source: function (request, response) {
+
+            suggestCallBack = function (data) {
+                var suggestions =[];
+                $.each(data[1], function (key, val) {
+                    suggestions.push({
+                        "label": val[0]
+                    });
+                });
+                suggestions.length = 5; // prune suggestions list to only 5 items
+                response(suggestions);
+            };
+            var d = new Date();
+            $.getJSON("http://suggestqueries.google.com/complete/search?callback=?",
+                    {
+                    "hl": "es", // Language                  
+                    "jsonp": "suggestCallBack", // jsonp callback function name
+                    "q": request.term, // query term
+                    "client": "youtube", // force youtube style response, i.e. jsonp
+                    "pp": d.getMilliseconds()
+                    });
+    },
+});
 
     $(document).keydown(function (e) {
         //Cambia de pagina con flechitas

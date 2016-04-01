@@ -30,7 +30,9 @@
                             </ul>
                             <button type="button" class="btn btn-default btn-sm hidden-xs" aria-label="Help" id="help" data-trigger="focus"  data-container="body" data-toggle="popover" data-placement="bottom" ><span class="glyphicon glyphicon-question-sign"></span></button>
                         </div>
-                        <input type="text" name="filtro" id="filtro" class="form-control"  placeholder="@Text.Textbox_PrincipalMp3" autocomplete="off" autofocus>
+                        <div class="ui-widget">
+                            <input type="text" name="filtro" id="filtro" class="form-control ui-autocomplete-input" autocomplete="off" placeholder="@Text.Textbox_PrincipalMp3" autofocus>
+                        </div>                        
                         <span class="input-group-btn">
                             <button class="btn btn-primary btn-sm" type="submit" id="botonAccion">@Text.Boton_Buscar</button>
                         </span>

@@ -214,11 +214,20 @@ function pagina(id, filtro, pagina, direccion) {
 }
 
 function marcarSeleccionados() {
-    $("input.checkDescargar").each(function () {
+    var seleccionadosEnPagina = 0;
+    var checks = $("input.checkDescargar");
+    var count = checks.length;
+    checks.each(function () {
         var tema = this;
         var id = $(tema).attr('id');
+
         if (seleccionados.hasOwnProperty(id)) {
+            seleccionadosEnPagina++;
             $(tema).prop('checked', true);
+        }
+
+        if (!--count && checks.length == seleccionadosEnPagina) {
+            $('#todos').prop('checked', true)
         }
     });
 }

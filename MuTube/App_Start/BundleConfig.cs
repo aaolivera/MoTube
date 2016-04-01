@@ -13,7 +13,8 @@ namespace MuTube
                         "~/Scripts/jquery-migrate*",
                         "~/Scripts/jquery.unobtrusive-ajax*",
                         "~/Scripts/jquery.validate*",
-                        "~/Scripts/jquery.blockUI.js"));
+                        "~/Scripts/jquery.blockUI.js",
+                        "~/Scripts/jquery-ui-1.9.2.min.js"));
 
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -27,7 +28,10 @@ namespace MuTube
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/themes/base/jquery.ui.core.css",
+                      "~/Content/themes/base/jquery.ui.theme.css",
+                      "~/Content/themes/base/jquery.ui.autocomplete.css"));
         }
     }
 }
