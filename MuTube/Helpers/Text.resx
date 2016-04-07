@@ -159,6 +159,9 @@
   <data name="Error_UrlInvalida" xml:space="preserve">
     <value>Ingrese una Url de youtube válida</value>
   </data>
+  <data name="Subtitulo" xml:space="preserve">
+    <value>descargá tus videos de youtube en formato MP3!</value>
+  </data>
   <data name="Textbox_PrincipalLink" xml:space="preserve">
     <value>Ingrese un link de youtube ej: https://www.youtube.com/watch?v=I6NOF_1kg6g</value>
   </data>
@@ -170,5 +173,8 @@
   </data>
   <data name="Titulo" xml:space="preserve">
     <value>Motube</value>
+  </data>
+  <data name="Titulo_Bender" xml:space="preserve">
+    <value>Bajá música con Juegos de Azar y Mujerzuelas</value>
   </data>
 </root>

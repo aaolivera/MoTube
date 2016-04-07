@@ -63,3 +63,74 @@
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
+
+.blocuiBox
+{
+    border:none !important;
+    width: 20% !important;
+    left: 40% !important;
+}
+
+
+ul.ui-autocomplete {
+    font-size: 12px;
+}
+
+@media (max-width: 427px) {
+  #bender{
+        position:absolute;
+        top:-55%;
+        right:-6%;
+        width:60px; /* you can use % */
+        height: auto;
+   }
+
+  h3 {
+      font-size: 20px
+  }
+}
+
+@media (min-width: 428px) and (max-width: 539px) {
+  #bender{
+        position:absolute;
+        top:-140%;
+        right:-3%;
+        width:60px; /* you can use % */
+        height: auto;
+   }
+
+  h3 {
+      font-size: 20px
+  }
+}
+
+@media (min-width: 540px) and (max-width: 767px) {
+  #bender{
+        position:absolute;
+        top:-110%;
+        right:-2%;
+        width:60px; /* you can use % */
+        height: auto;
+   }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #bender{
+        position:absolute;
+        top:-100%;
+        right:-9%;
+   }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  #bender{
+        position:absolute;
+        top:-55%;
+        right:-7%;
+   }
+}
+@media (min-width: 1200px) {
+  #bender{
+        position:absolute;
+        top:-55%;
+        right:-6%;
+   }
+}

@@ -190,13 +190,7 @@ function MostrarAlertaError(data) {
 }
 
 function pagina(id, filtro, pagina, direccion) {
-    //
-    var correccion = -1;
-    if (direccion) {
-        correccion = 1;
-    }
-    BloquearPantalla(filtro, pagina + correccion);
-    //
+    BloquearPantalla();
 
     $.ajax({
         url: "\\",

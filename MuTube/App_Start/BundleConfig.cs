@@ -29,6 +29,7 @@ namespace MuTube
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
+                      "~/Content/themes/base/jquery-ui.css",
                       "~/Content/themes/base/jquery.ui.core.css",
                       "~/Content/themes/base/jquery.ui.theme.css",
                       "~/Content/themes/base/jquery.ui.autocomplete.css"));

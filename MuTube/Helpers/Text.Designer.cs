@@ -187,6 +187,15 @@ namespace MuTube.Helpers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to descargá tus videos de youtube en formato MP3!.
+        /// </summary>
+        public static string Subtitulo {
+            get {
+                return ResourceManager.GetString("Subtitulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingrese un link de youtube ej: https://www.youtube.com/watch?v=I6NOF_1kg6g.
         /// </summary>
         public static string Textbox_PrincipalLink {
@@ -219,6 +228,15 @@ namespace MuTube.Helpers {
         public static string Titulo {
             get {
                 return ResourceManager.GetString("Titulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bajá música con Juegos de Azar y Mujerzuelas.
+        /// </summary>
+        public static string Titulo_Bender {
+            get {
+                return ResourceManager.GetString("Titulo_Bender", resourceCulture);
             }
         }
     }

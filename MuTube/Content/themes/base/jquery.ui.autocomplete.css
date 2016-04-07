@@ -17,18 +17,3 @@
 /* workarounds */
 * html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
 
-
-ul.ui-autocomplete {
-    list-style: none;
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-    padding-left: 10px;
-    font-size: 12px;
-}
-
-ul.ui-autocomplete a:hover,
-ul.ui-autocomplete a:focus {
-    text-decoration:none;
-    
-}

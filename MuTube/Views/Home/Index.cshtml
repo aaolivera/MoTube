@@ -2,8 +2,8 @@
     ViewBag.Title = Text.Titulo;
 }
 @using MuTube.Helpers
-<script type="text/javascript" src="~/Scripts/index.js?v=20160401"></script>
-<script type="text/javascript" src="~/Scripts/paginado.js?v=20160401"></script>
+<script type="text/javascript" src="~/Scripts/index.js?v=20160406"></script>
+<script type="text/javascript" src="~/Scripts/paginado.js?v=20160406"></script>
 @Html.Hidden("loading", Url.Content("Image/loading.gif"))
 @Html.Hidden("urlObtenerNombre", Url.Action("ObtenerNombrePorId","Home"))
 <div id="fondo" class="jumbotron" style="padding-top: 10px;padding-bottom:0px ;margin-bottom: 0px">
@@ -11,8 +11,8 @@
     
     <div class="row">
         <div class="col-md-12">
-            <a  href="#" ><img id="bender" data-toggle="tooltip" data-placement="left" title="Bajá música con Mujerzuelas y Juegos de Azar" style="position:absolute;top:-55%;right:-6%" src="@Url.Content("~/Image/bender.png")" /></a>
-            <h3 style="margin-top: 5px">@Text.Titulo - <small>descargá tus videos de youtube en formato MP3!</small></h3>
+            <a  href="#"><img id="bender" data-toggle="tooltip" data-placement="left" title="@Text.Titulo_Bender" src="@Url.Content("~/Image/bender.png")" /></a>
+            <h3 style="margin-top: 5px">@Text.Titulo - <small>@Text.Subtitulo</small></h3>
         </div>
     </div>    
     <div class="row">

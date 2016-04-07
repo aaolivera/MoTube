@@ -14,9 +14,7 @@ $(document).ready(function () {
             suggestCallBack = function (data) {
                 var suggestions =[];
                 $.each(data[1], function (key, val) {
-                    suggestions.push({
-                        "label": val[0]
-                    });
+                    suggestions.push(val[0]);
                 });
                 suggestions.length = 5; // prune suggestions list to only 5 items
                 response(suggestions);
@@ -97,7 +95,7 @@ function isValid() {
         }
         return false;
     }
-    BloquearPantalla($('#filtro').val())
+    BloquearPantalla()
     seleccionados = {};
     return true;
 }
@@ -120,16 +118,19 @@ function removerValid()
     $('#filtrogroup').css('margin-bottom', '20px');
 }
 
-function BloquearPantalla(filtro, pagina) {
-    var mensaje = 'Buscando "' + filtro + '"';
-    if (pagina != null) {
-        mensaje += ' - Pagina ' + pagina;
-    }
-    $.blockUI({ message: '<h5>' + cargando(mensaje) + '</h5>' });
+function BloquearPantalla() {
+    $.blockUI({
+        blockMsgClass: 'blocuiBox',
+        message: '<h5>' + cargandoGif() + 'Buscando</h5>'
+    });
+}
+
+function cargandoGif() {
+    return "<img src=\"" + $('#loading').val() + "\"/>";
 }
 
 function cargando(nombre) {
-    return "<img src=\"" + $('#loading').val() + "\"/>" + strip(nombre);
+    return cargandoGif() + strip(nombre);
 }
 
 function ejecutarRetrasado(accion, tiempo) {
@@ -140,7 +141,7 @@ function ejecutarRetrasado(accion, tiempo) {
 function strip(html) {
     var tmp = document.createElement("DIV");
     tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || "";
+    return tmp.textContent || tmp.innerText || ""; 
 }
 
 function validarUrl(url) {
