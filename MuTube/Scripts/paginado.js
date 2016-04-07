@@ -41,10 +41,12 @@ $(document).ready(function () {
         if (Object.keys(seleccionados).length > 0) {
             $("#myModal").modal('show');
             var count = Object.keys(seleccionados).length;
-            var oncomplete = function () {
+            var oncomplete = function (tema) {
                 if (!--count) {
                     $("#myModal-cerrar").prop('disabled', false);
-                }                
+                }
+                $('#' + tema.id).prop('checked', false);
+                delete seleccionados[tema.id];
             };
             Object.keys(seleccionados).forEach(function (id) {
                 var nombre = seleccionados[id];
@@ -172,7 +174,7 @@ function procesar(tema,i) {
         if (tema.versionn == versionDeModal.n && versionDeModal.a && !n) {
             procesar(tema, i + 1);
         };
-        if (tema.oncomplete != null) tema.oncomplete();
+        if (tema.oncomplete != null) tema.oncomplete(tema);
     });
 
     procesadores[i](tema,dfd);
