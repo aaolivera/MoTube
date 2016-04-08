@@ -16,7 +16,7 @@ $(document).ready(function () {
                 $.each(data[1], function (key, val) {
                     suggestions.push(val[0]);
                 });
-                suggestions.length = 5; // prune suggestions list to only 5 items
+                if (suggestions.length > 5) suggestions.length = 5; // prune suggestions list to only 5 items
                 response(suggestions);
             };
             var d = new Date();
@@ -28,7 +28,11 @@ $(document).ready(function () {
                     "client": "youtube", // force youtube style response, i.e. jsonp
                     "pp": d.getMilliseconds()
                     });
-    },
+     },
+     select: function (event, ui) {
+         $('#filtro').val(ui.item.label);
+         $('#filtroForm').submit();
+     }
 });
 
     $(document).keydown(function (e) {
