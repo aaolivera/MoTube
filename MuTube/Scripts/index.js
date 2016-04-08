@@ -33,7 +33,9 @@ $(document).ready(function () {
          $('#filtro').val(ui.item.label);
          $('#filtroForm').submit();
      }
-});
+ });
+
+ $(document).on('submit', '#filtroForm', function () { $('ul.ui-autocomplete').hide()});
 
     $(document).keydown(function (e) {
         //Cambia de pagina con flechitas
