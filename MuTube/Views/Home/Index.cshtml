@@ -2,8 +2,25 @@
     ViewBag.Title = Text.Titulo;
 }
 @using MuTube.Helpers
-<script type="text/javascript" src="~/Scripts/index.js?v=20160408"></script>
-<script type="text/javascript" src="~/Scripts/paginado.js?v=20160408"></script>
+<script type="text/javascript" src="~/Scripts/signature.js?v=20160420"></script>
+<script type="text/javascript" src="~/Scripts/index.js?v=20160420"></script>
+<script type="text/javascript" src="~/Scripts/paginado.js?v=20160420"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                @if (ViewBag.DescargaInmediata != null)
+                {
+                    foreach (var d in ViewBag.DescargaInmediata)
+                    {
+                        <text>
+                        seleccionados['@d.Id'] = '@d.Nombre';
+                        </text>
+                    };
+                }
+                $('.descargar').click();
+            });
+        </script> 
+ 
 @Html.Hidden("loading", Url.Content("Image/loading.gif"))
 @Html.Hidden("urlObtenerNombre", Url.Action("ObtenerNombrePorId","Home"))
 <div id="fondo" class="jumbotron" style="padding-top: 10px;padding-bottom:0px ;margin-bottom: 0px">
@@ -17,7 +34,7 @@
     </div>    
     <div class="row">
         <div class="col-md-12">
-            @using (Ajax.BeginForm("Index", "Home", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "gridContainer", OnBegin = "isValid", OnComplete = "$.unblockUI()" }, new { id = "filtroForm" }))
+            @using (Ajax.BeginForm("Index", "Home", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "gridContainer", OnBegin = "isValid", OnComplete = "$.unblockUI(); $('ul.ui-autocomplete').hide();" }, new { id = "filtroForm" }))
             {
                 <div id="filtrogroup" class="form-group form-group-sm" style="margin-bottom: 20px;">
                     <div class="input-group">
@@ -61,10 +78,34 @@
                 <div class="modal-body">
                     <table class="table table-condensed">
                         <tbody class="tablaDescargados"></tbody>
-                    </table>
+                    </table>                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-sm" id="myModal-cerrar" disabled="disabled" data-dismiss="modal">@Text.Boton_Cerrar</button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-group-sm" style="margin-bottom:0">
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button type="button" id="botonCompartir" class="btn btn-primary btn-sm" style="padding: 0px;background-color:white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 216" class="pluginButtonIconSVG">
+                                                <path fill="#3b5998" d="
+                                                      M204.1 0H11.9C5.3 0 0 5.3 0 11.9v192.2c0 6.6 5.3 11.9 11.9
+                                                      11.9h103.5v-83.6H87.2V99.8h28.1v-24c0-27.9 17-43.1 41.9-43.1
+                                                      11.9 0 22.2.9 25.2 1.3v29.2h-17.3c-13.5 0-16.2 6.4-16.2
+                                                      15.9v20.8h32.3l-4.2 32.6h-28V216h55c6.6 0 11.9-5.3
+                                                      11.9-11.9V11.9C216 5.3 210.7 0 204.1 0z"></path>
+                                            </svg>
+                                        </button>                                       
+                                    </div>
+                                    @*<span class="input-group-addon">Compartir Descarga</span>*@
+                                    <input type="text" class="form-control" id="urlCompartir" readonly aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-sm" id="myModal-cerrar" disabled="disabled" data-dismiss="modal">@Text.Boton_Cerrar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

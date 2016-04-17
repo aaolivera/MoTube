@@ -130,19 +130,19 @@
     <value> Buscar Mp3</value>
   </data>
   <data name="BuscarMp3Help" xml:space="preserve">
-    <value>Puedes descargar en formato MP3 toda una selección de temas utilizando el buscador, con el criterio de busqueda que creas conveniente (artista, cancion, album, etc).</value>
+    <value>Descarga en formato MP3 toda una selección de temas utilizando el buscador, con el criterio de busqueda que creas conveniente (artista, cancion, album, etc).</value>
   </data>
   <data name="BuscarMp4" xml:space="preserve">
     <value> Buscar Mp4</value>
   </data>
   <data name="BuscarMp4Help" xml:space="preserve">
-    <value>Puedes descargar en formato MP4 toda una selección de videos utilizando el buscador, con el criterio de busqueda que creas conveniente (artista, cancion, album, etc).</value>
+    <value>Descarga en formato MP4 toda una selección de videos utilizando el buscador, con el criterio de busqueda que creas conveniente (artista, cancion, album, etc).</value>
   </data>
   <data name="DescargarLink" xml:space="preserve">
     <value> Descargar Link</value>
   </data>
   <data name="DescargarLinkHelp" xml:space="preserve">
-    <value>Si tienes un video en youtube que quieres en formato mp3, puedes ingresarlo y descargarlo directamente sin intermediarios, solo copia el link y pegalo en la barra de descargas.</value>
+    <value>Si tenes un video en youtube que queres en formato mp3, podes descargarlo directamente sin intermediarios, solo copia el link y pegalo en la barra de descargas.</value>
   </data>
   <data name="Dialogo_Procesando_Titulo" xml:space="preserve">
     <value>Procesando...</value>

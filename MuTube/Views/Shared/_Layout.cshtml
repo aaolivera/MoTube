@@ -4,6 +4,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @*<meta property="og:url" content="http://www.motube.com.ar" />*@
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Motube" />
+    <meta property="og:image" content="http://www.motube.com.ar/Image/bender2.png" />
+    @if (ViewBag.DescargaInmediata != null)
+    {
+        <meta property="og:description" content="Descarga en formato MP3:
+              
+              @foreach (var d in ViewBag.DescargaInmediata)
+                    {
+                        <text>
+                        @@@d.Nombre
+                        </text>
+                    }" />
+    }
+    else
+    {
+        <meta property="og:description" content="Descarga en formato MP3 toda una selección de temas utilizando el buscador" />
+    }
+
     <link rel="shortcut icon" type="image/x-icon" href="resources/favicon.ico" />
 
     <title>@Text.Titulo</title>
@@ -17,6 +38,7 @@
     <script type="text/javascript" src="http://malsup.github.io/jquery.blockUI.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>*@
 
+    
     @Scripts.Render("~/bundles/jquery")
 
     <div class="container body-content">

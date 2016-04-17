@@ -17,7 +17,7 @@
     <AssemblyName>MuTube</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -159,6 +159,7 @@
       <DependentUpon>Text.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\Encriptador.cs" />
+    <Compile Include="Models\TemaSeleccionado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +240,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Image\bender.png" />
+    <Content Include="Image\bender2.png" />
     <Content Include="Image\loading.gif" />
     <Content Include="Image\yt.png" />
     <Content Include="resources\favicon.ico" />
@@ -327,7 +329,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54733</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54733/</IISUrl>
+          <IISUrl>http://localhost/MuTube</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

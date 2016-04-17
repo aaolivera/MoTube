@@ -23,8 +23,12 @@ namespace MuTube.Controllers
             _servicio = servicio;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(decimal? s,string t = null)
         {
+            if (!string.IsNullOrEmpty(t) && s.HasValue && Encriptador.Sig(t) == s)
+            {
+                ViewBag.DescargaInmediata = t.Split(',').Select(x => new TemaSeleccionado { Nombre = _servicio.ObtenerNombrePorId(x), Id = x}).ToList();
+            }
             return View();
         }
 

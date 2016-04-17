@@ -71,6 +71,13 @@
     left: 40% !important;
 }
 
+.pluginButtonIconSVG
+{
+    display: block;
+    height: 28px;
+    width: 28px;
+}
+
 
 ul.ui-autocomplete {
     font-size: 12px;

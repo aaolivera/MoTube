@@ -97,7 +97,7 @@ namespace MuTube.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Puedes descargar en formato MP3 toda una selección de temas utilizando el buscador, con el criterio de busqueda que creas conveniente (artista, cancion, album, etc)..
+        ///   Looks up a localized string similar to Descarga en formato MP3 toda una selección de temas utilizando el buscador, con el criterio de busqueda que creas conveniente (artista, cancion, album, etc)..
         /// </summary>
         public static string BuscarMp3Help {
             get {
@@ -115,7 +115,7 @@ namespace MuTube.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Puedes descargar en formato MP4 toda una selección de videos utilizando el buscador, con el criterio de busqueda que creas conveniente (artista, cancion, album, etc)..
+        ///   Looks up a localized string similar to Descarga en formato MP4 toda una selección de videos utilizando el buscador, con el criterio de busqueda que creas conveniente (artista, cancion, album, etc)..
         /// </summary>
         public static string BuscarMp4Help {
             get {
@@ -133,7 +133,7 @@ namespace MuTube.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Si tienes un video en youtube que quieres en formato mp3, puedes ingresarlo y descargarlo directamente sin intermediarios, solo copia el link y pegalo en la barra de descargas..
+        ///   Looks up a localized string similar to Si tenes un video en youtube que queres en formato mp3, podes descargarlo directamente sin intermediarios, solo copia el link y pegalo en la barra de descargas..
         /// </summary>
         public static string DescargarLinkHelp {
             get {

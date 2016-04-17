@@ -1,31 +1,6 @@
-﻿
-function pushUrl(id) {
-    var videoUrl = 'http://www.youtube.com/watch?v=' + id, url;
-
-    url = '/a/pushItem/?';
-    url += 'item=' + escape(videoUrl);
-    url += '&el=na&bf=false';
-    url += '&r=' + new Date().getTime();
-    return signateUrl(url);
+﻿function signateUrl(url) {
+    return 'http://www.motube.com.ar?t=' + url + '&s=' + _sig(url);
 }
-
-
-function getInfoUrl(id) {
-    var videoUrl = 'http://www.youtube.com/watch?v=' + id, url;
-
-    url = '/a/itemInfo/?';
-    url += 'video_id=' + id;
-    url += '&ac=www&t=grp';
-    url += '&r=' + new Date().getTime();
-    return signateUrl(url);
-}
-
-function signateUrl(url) {
-    var host = 'http://www.youtube-mp3.org';
-
-    return host + url + '&s=' + _sig(url);
-}
-
 
 var b0I = {
     'V': function (I, B, P) {
