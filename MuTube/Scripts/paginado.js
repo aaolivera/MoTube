@@ -21,6 +21,14 @@ $(document).ready(function () {
             $("input.checkDescargar").prop('checked', false).trigger("change");
         }
     });
+
+    $("#botonUrlDescarga").on("click", function () {
+        copyToClipboard($("#urlCompartir"));
+    });
+
+    $("#urlCompartir").on("click", function () {
+        $("#urlCompartir").select();
+    });
     
     $(document).on("change", "input.checkDescargar", function () {
         var tema = this;
@@ -31,10 +39,6 @@ $(document).ready(function () {
         } else {
             delete seleccionados[id];
         }
-    });
-
-    $("#urlCompartir").on("click", function () {
-        $(this).select();
     });
 
     $(document).on("click", '.descargar', function () {
@@ -67,10 +71,19 @@ $(document).ready(function () {
     });
 
     $(document).on("click", '#botonCompartir', function () {
+
+        var leftPosition, topPosition;
+        //Allow for borders.
+        leftPosition = (window.screen.width / 2) - ((400 / 2) + 10);
+        //Allow for title and status bars.
+        topPosition = (window.screen.height / 2) - ((300 / 2) + 50);
+        var windowFeatures = "status=no,height=" + 300 + ",width=" + 400 + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+        u = location.href;
+        t = document.title;
         var win = window.open(
              'https://www.facebook.com/dialog/share?app_id=966242223397117&redirect_uri=http%3A%2F%2Fwww.facebook.com%2Fdialog%2Freturn%2Fclose&display=popup&href=' + encodeURIComponent($("#urlCompartir").val())
             //'https://www.facebook.com/dialog/feed?display=popup&link=' + encodeURIComponent($("#urlCompartir").val()) + '&redirect_uri=http%3A%2F%2Fwww.facebook.com%2Fdialog%2Freturn%2Fclose'
-       , '_blank');
+       , 'sharer', windowFeatures);
         if (win) {
             //Browser has allowed it to be opened
             win.focus();
@@ -244,4 +257,12 @@ function marcarSeleccionados() {
             $('#todos').prop('checked', true)
         }
     });
+}
+
+
+function copyToClipboard(elem) {
+    var currentFocus = document.activeElement;
+    elem.focus();
+    elem.select();
+    document.execCommand("copy");
 }
